@@ -106,7 +106,8 @@ console.log(MAX_VAL); //ReferenceError: MAX_VAL is not defined
 
 parseInt(string, radix) 사용 시 디폴트는 10진법이 적용되기는 하나 명시적으로 지정하는 것이 좋다.
 
-Symbol????????????
+#### Symbol
+?????????????????????????????????????????
 
 #### 리터럴
 
@@ -115,3 +116,124 @@ Symbol????????????
 var name = "Bob", time = "today";
 console.log(`Hello ${name}, how are you ${time}?`);
 </code></pre>
+
+#### 조건문
+
+조건문에서 거짓으로 평가되는 값
+- false
+- undefined
+- null
+- 0
+- NaN
+- the empty string("")
+
+Boolean 데이터 형의 true, false 와 원시 boolean 값의 true, false는 다르다.
+<pre><code>
+var b = new Boolean(false);
+if (b) // this condition evaluates to true
+</code></pre>
+
+
+#### try... catch 문법
+<pre><code>
+
+function CustomException(message) {
+    this.message = message;
+    this.name = "CustomException";
+}
+
+CustomException.prototype.toString = function() {
+    return this.name + ': "' + this.message + '"';
+}
+
+try {
+    throw new CustomException("Unsupported Type");
+} catch (error) {
+    console.log(error);
+}
+</code></pre>
+
+#### Promise
+?????????????????????????
+
+
+#### for...in 문
+객체의 열거 속성을 통해 지정된 변수를 반복.
+<pre><code>
+var computer = {
+    maker: "apple",
+    model: "MackBook Air"
+};
+
+for (var i in computer) {
+    console.log(i, computer[i]);
+}
+</code></pre>
+
+배열의 경우에는 전통적인 for 루프를 사용하는 것이 좋음.
+
+#### for...of 문
+ECMAScript 2015(ES6) 부터 사용 가능.  
+Array, Map, Set 또는 Iterator 인터페이스를 구현하는 개체에서 사용 가능.
+<pre><code>
+var array = ["apple", "banana", "melon"];
+
+for (let n in array) {
+    console.log(n);
+}
+//0
+//1
+//2
+for (let n of array) {
+    console.log(n);
+}
+//apple
+//banana
+//melon
+</code></pre>
+
+#### 함수 선언
+함수의 파라미터로 원시 타입이 넘어갈 경우에는 call by value 이고 Array, Object 등이 넘어갈 때에는 call by reference 이다.  
+단, 매개변수에서 새로운 객체를 할당하는 것은 함수 외부에 영향을 끼치지 않는다.
+
+<pre><code>
+var orders = [1,2,3];
+
+function reOrder(obj) {
+    obj = [3,2,1];
+    console.log(obj);
+}
+
+reOrder(orders);
+console.log(orders);
+//[ 3, 2, 1 ]
+//[ 1, 2, 3 ]
+</code></pre>
+
+
+#### 함수 표현
+
+좀 더 알아볼 것.
+
+
+#### 함수 호출 범위
+함수 선언 방식에 따라 호출 범위가 달라진다. 
+<pre><code>
+console.log(test(3)); // 9 출력
+
+function test(value) {
+    return value * value;
+}
+
+console.log(test2(3)); // Error
+
+var test2 = function(value) {
+    return value * value;
+}
+</code></pre>
+
+
+
+
+
+
